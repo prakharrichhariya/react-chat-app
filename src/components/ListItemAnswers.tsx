@@ -4,10 +4,12 @@
  */
 
 import React from 'react';
-import { Avatar, Typography } from 'antd';
+import _ from 'lodash';
+import { Avatar, Button, Dropdown, MenuProps, Typography } from 'antd';
+import { DeleteOutlined, DownOutlined } from '@ant-design/icons';
 import DOMPurify from 'dompurify';
 
-import { useValues } from 'kea';
+import { useActions, useValues } from 'kea';
 import { chatLogic } from '../store/chatLogic';
 
 interface IProps {
@@ -17,8 +19,31 @@ interface IProps {
 }
 
 const ListItemAnswers: React.FC<IProps> = (props) => {
-	const { content, time, type } = props;
-	const { currentUser } = useValues(chatLogic);
+	const { content, time } = props;
+	const { currentUser, currentChats } = useValues(chatLogic);
+	const { setCurrentChats, setCurrentUser, setReplying, setReplyingTo, setInputValue } = useActions(chatLogic);
+	const handleDeleteClick = (content: string) => {
+		const newMessageList = _.filter(currentUser.messageList, (message) => message.content !== content);
+		setCurrentUser({ ...currentUser, messageList: newMessageList });
+		let newChats = currentChats.map((chat: any) => {
+			if (chat.userId === currentUser.userId) {
+				chat.messageList = newMessageList;
+			}
+			return chat;
+		});
+		setCurrentChats(newChats);
+	};
+	const items: MenuProps['items'] = [
+		{
+			key: '1',
+			label: 'Reply',
+			onClick: () => {
+				setReplying(true);
+				setReplyingTo(content);
+				setInputValue(`Replying-To"${content}"-`);
+			},
+		},
+	];
 
 	return (
 		<div
@@ -52,6 +77,12 @@ const ListItemAnswers: React.FC<IProps> = (props) => {
 					<span dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(content) }} />
 				</Typography.Text>
 				<Typography.Text style={{ color: 'gray', fontSize: 12 }}>{time}</Typography.Text>
+				<Dropdown trigger={['click']} menu={{ items }}>
+					<Button icon={<DownOutlined />} type='text' onClick={(e) => e.stopPropagation()} />
+				</Dropdown>
+			</div>
+			<div>
+				<DeleteOutlined onClick={() => handleDeleteClick(content)} />
 			</div>
 		</div>
 	);

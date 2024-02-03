@@ -10,10 +10,16 @@ export const chatLogic = kea([
 	defaults({
 		currentUser: null,
 		currentChats: usersList,
+		replying: false,
+		replyingTo: '',
+		inputValue: '',
 	}),
 	actions({
 		setCurrentUser: (user) => ({ user }),
 		setCurrentChats: (chats) => ({ chats }),
+		setReplying: (replying) => ({ replying }),
+		setReplyingTo: (replyingTo) => ({ replyingTo }),
+		setInputValue: (inputValue) => ({ inputValue }),
 	}),
 	reducers({
 		currentUser: {
@@ -21,6 +27,15 @@ export const chatLogic = kea([
 		},
 		currentChats: {
 			setCurrentChats: (__, { chats }) => chats,
+		},
+		replying: {
+			setReplying: (__, { replying }) => replying,
+		},
+		replyingTo: {
+			setReplyingTo: (__, { replyingTo }) => replyingTo,
+		},
+		inputValue: {
+			setInputValue: (__, { inputValue }) => inputValue,
 		},
 	}),
 ]);

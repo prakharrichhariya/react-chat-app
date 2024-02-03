@@ -15,10 +15,9 @@ import ListItemQuestions from './ListItemQuestions';
 import { chatLogic } from '../store/chatLogic';
 
 const MessageScreen: React.FC = () => {
-	const { currentUser, currentChats } = useValues(chatLogic);
-	const { setCurrentUser, setCurrentChats } = useActions(chatLogic);
+	const { currentUser, currentChats, replying, replyingTo, inputValue } = useValues(chatLogic);
+	const { setCurrentUser, setCurrentChats, setReplying, setReplyingTo, setInputValue } = useActions(chatLogic);
 	const messageInputRef = useRef<InputRef>(null);
-	const [inputValue, setInputValue] = React.useState('');
 
 	useEffect(() => {
 		if (messageInputRef.current) {
@@ -49,6 +48,9 @@ const MessageScreen: React.FC = () => {
 	};
 
 	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		if (replying) {
+			setInputValue(`${inputValue}${e.target.value}`);
+		}
 		setInputValue(e.target.value);
 	};
 
@@ -79,6 +81,8 @@ const MessageScreen: React.FC = () => {
 			}
 		}, 1);
 		setInputValue('');
+		setReplying(false);
+		setReplyingTo('');
 	};
 
 	const items: MenuProps['items'] = [
