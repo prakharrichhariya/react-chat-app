@@ -2,7 +2,7 @@
 
 Here are the steps to run and use this React Chat app:
 
--   First clone and checkout open the folder inside terminal
+-   First clone and open terminal inside the cloned folder.
 -   Do "npm install" and then "npm start"
 -   The project will start running at "http://localhost:3000".
 -   Open [http://localhost:3000](http://localhost:3000) to view the app in in your browser.
