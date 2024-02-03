@@ -106,12 +106,12 @@ const MessageScreen: React.FC = () => {
 					display: 'flex',
 					flexDirection: 'row',
 					alignItems: 'center',
-					padding: '20px',
+					padding: '15px',
 					justifyContent: 'space-between',
 				}}
 			>
 				<div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: 15 }}>
-					<Avatar src={currentUser.icon} />
+					<Avatar size={'large'} src={currentUser.icon} />
 					<div style={{ fontSize: 20, fontWeight: 'bold' }}>{currentUser.name}</div>
 				</div>
 				<div>

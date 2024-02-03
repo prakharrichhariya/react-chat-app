@@ -35,7 +35,7 @@ const MessageSidebar: React.FC = () => {
 	];
 
 	return (
-		<div style={{ height: '100%' }}>
+		<div style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
 			<div
 				style={{
 					borderBottom: '1px solid #424242',
@@ -44,11 +44,11 @@ const MessageSidebar: React.FC = () => {
 					flexDirection: 'row',
 					gap: '20px',
 					alignItems: 'center',
-					padding: '20px',
+					padding: '22px',
 				}}
 			>
 				<WhatsAppOutlined style={{ color: 'black', fontSize: 25 }} />
-				<div style={{ fontSize: 20, fontWeight: 'bold' }}>React Chat App</div>
+				<div style={{ fontSize: 22, fontWeight: 'bold' }}>React Chat App</div>
 			</div>
 			<List
 				itemLayout='horizontal'
@@ -74,7 +74,11 @@ const MessageSidebar: React.FC = () => {
 
 								<div>
 									<Dropdown trigger={['click']} menu={{ items }}>
-										<Button icon={<DownOutlined />} type='text' />
+										<Button
+											icon={<DownOutlined />}
+											type='text'
+											onClick={(e) => e.stopPropagation()}
+										/>
 									</Dropdown>
 								</div>
 							</div>
