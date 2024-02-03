@@ -1,0 +1,31 @@
+{
+	"compilerOptions": {
+		"module": "ESNext",
+		"allowSyntheticDefaultImports": true,
+		"moduleResolution": "node",
+		"target": "ES2022",
+		"jsx": "react",
+		"rootDir": ".",
+		"sourceMap": true,
+		"experimentalDecorators": true,
+		"lib": ["dom", "ES2021.String"],
+		"strict": true,
+		"baseUrl": ".",
+		"paths": {
+			"pages/*": ["src/pages/*"],
+			"components/*": ["src/components/*"],
+			"hooks/*": ["src/hooks/*"],
+			"lib/*": ["src/lib/*"],
+			"styles/*": ["src/styles/*"],
+			"utils/*": ["src/utils/*"],
+			"logics/*": ["src/logics/*"],
+			"client/*": ["src/client/*"],
+			"configs/*": ["src/configs/*"],
+			"store/*": ["src/store/*"],
+			"typings/*": ["src/typings/*"],
+			"app-constants/*": ["src/constants/*"]
+		}
+	},
+	"include": ["src"],
+	"exclude": ["node_modules", "public"]
+}
