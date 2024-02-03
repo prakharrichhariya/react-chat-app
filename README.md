@@ -8,8 +8,8 @@ Here are the steps to run and use this React Chat app:
 -   Open [http://localhost:3000](http://localhost:3000) to view the app in in your browser.
 -   Click on any chat from the Side bar. This will open the chat.
 -   Start typing your message in Textbox and press Enter or click on Send icon to send the message.
--   For deleting the chat, click on Down icon at top of the opened chat and then click on "Delete Chat" option.
--   Also you can delete the chat from Side bar as well, by clicking on the Down icon associated with each chat and then
+-   For deleting the chat, click on Down-arrow icon at top of the opened chat and then click on "Delete Chat" option.
+-   Also you can delete the chat from Side bar as well, by clicking on the Down-arrow icon associated with each chat and then
     selecting "Delete Chat" from the dropdown menu.
 -   You can refresh browser to bring back old chats that are deleted.
 
